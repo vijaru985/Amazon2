@@ -10,6 +10,7 @@ Feature: Validate login functionality of amazon website
       | username                   | password  |
       | vijayruttala9851@gmail.com | Vijay@985 |
 
+  @Regression
   Scenario Outline: Verify login functionality with invalid credentials
     Given user is on amazon sign in page
     When user enters <username> and <password>

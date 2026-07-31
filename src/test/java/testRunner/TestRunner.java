@@ -8,7 +8,7 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions( features = "src/test/resources/features",
                   glue = {"stepDefinitions", "hooks"},
                   monochrome = true,
-                  tags = ("@Smoke"),
+                  tags = ("@Regression"),
                   plugin = {"pretty", "html:target/report/report.html",
                 		     				  "json:target/report/report.json",
                 		          "junit:target/report/report.xml"
