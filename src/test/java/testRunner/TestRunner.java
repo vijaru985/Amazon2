@@ -5,21 +5,19 @@ import org.testng.annotations.DataProvider;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
-@CucumberOptions( features = "src/test/resources/features",
-                  glue = {"stepDefinitions", "hooks"},
-                  monochrome = true,
-                  tags = ("@Regression"),
-                  plugin = {"pretty", "html:target/report/report.html",
-                		     				  "json:target/report/report.json",
-                		          "junit:target/report/report.xml"
-                		  }
-		
-		)
-public class TestRunner extends AbstractTestNGCucumberTests{
+@CucumberOptions(features = "src/test/resources/features", 
+                 glue = { "stepDefinitions","hooks" }, 
+                 monochrome = true, 
+                 tags = ("@Regression"), 
+                 plugin = { "pretty", "json:target/cucumber.json",
+				                       "html:target/cucumber-report.html" }
 
-	    @Override
-	    @DataProvider(parallel = true)
-	    public Object[][] scenarios() {
-	        return super.scenarios();
-	    }
+)
+public class TestRunner extends AbstractTestNGCucumberTests {
+
+	@Override
+	@DataProvider(parallel = true)
+	public Object[][] scenarios() {
+		return super.scenarios();
+	}
 }
