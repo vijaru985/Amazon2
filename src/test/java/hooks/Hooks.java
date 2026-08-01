@@ -19,7 +19,6 @@ import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.Scenario;
-import report.EmailReportGenerator;
 import utility.GenericFunctions;
 
 public class Hooks {
@@ -73,13 +72,5 @@ public class Hooks {
 	public void takeScreenshotAfterEachStep() {
 		oGF = new GenericFunctions(DriverInstance.getDriver());
 		oGF.captureScreenshot(DriverInstance.getDriver());
-	}
-	
-	@AfterAll
-	public static void afterAll() throws Exception {
-        System.out.println("Before");
-	    EmailReportGenerator.generateReport();
-	    System.out.println("After");
-
 	}
 }
