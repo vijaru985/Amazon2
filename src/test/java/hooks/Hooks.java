@@ -14,10 +14,12 @@ import org.openqa.selenium.edge.EdgeDriver;
 
 import driver.DriverInstance;
 import io.cucumber.java.After;
+import io.cucumber.java.AfterAll;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.Scenario;
+import report.EmailReportGenerator;
 import utility.GenericFunctions;
 
 public class Hooks {
@@ -73,4 +75,10 @@ public class Hooks {
 		oGF.captureScreenshot(DriverInstance.getDriver());
 	}
 	
+	@AfterAll
+	public static void afterAll() throws Exception {
+
+	    EmailReportGenerator.generateReport();
+
+	}
 }
