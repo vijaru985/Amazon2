@@ -166,22 +166,22 @@ margin-top:8px;
 }
 
 .summary{
-width:100%;
-border-collapse:separate;
-border-spacing:10px;
-margin:15px 0;
+    width:70%;
+    margin:15px auto;
+    border-collapse:separate;
+    border-spacing:8px;
 }
 
 .card{
-border-radius:8px;
-padding:10px;
-text-align:center;
-color:white;
-font-size:15px;
-font-weight:bold;
-height:85px;
-line-height:20px;
-box-shadow:0 2px 5px rgba(0,0,0,0.15);
+    border-radius:6px;
+    padding:6px;
+    text-align:center;
+    color:white;
+    font-size:13px;
+    font-weight:bold;
+    height:50px;
+    line-height:16px;
+    box-shadow:0 1px 3px rgba(0,0,0,0.15);
 }
 
 .total{
@@ -279,9 +279,17 @@ Selenium • Cucumber • Java • Jenkins
 <td>
 
 <div class="card total">
-📋<br>
-<div style="font-size:14px;margin-top:6px;">Total Scenarios</div>
-<div style="font-size:28px;font-weight:bold;margin-top:6px;">${total}</div>
+
+<div style="font-size:18px;">📋</div>
+
+<div style="font-size:12px;margin-top:2px;">
+Total
+</div>
+
+<div style="font-size:18px;font-weight:bold;">
+${total}
+</div>
+
 </div>
 
 </td>
@@ -290,17 +298,15 @@ Selenium • Cucumber • Java • Jenkins
 
 <div class="card pass">
 
-✅<br><br>
+<div style="font-size:18px;">✅</div>
 
+<div style="font-size:12px;margin-top:2px;">
 Passed
+</div>
 
-<br><br>
-
-<span style="font-size:30px;">
-
+<div style="font-size:18px;font-weight:bold;">
 ${passed}
-
-</span>
+</div>
 
 </div>
 
@@ -309,9 +315,17 @@ ${passed}
 <td>
 
 <div class="card fail">
-❌<br>
-<div style="font-size:14px;margin-top:6px;">Failed</div>
-<div style="font-size:28px;font-weight:bold;margin-top:6px;">${failed}</div>
+
+<div style="font-size:18px;">❌</div>
+
+<div style="font-size:12px;margin-top:2px;">
+Failed
+</div>
+
+<div style="font-size:18px;font-weight:bold;">
+${failed}
+</div>
+
 </div>
 
 </td>
