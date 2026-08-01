@@ -1,5 +1,6 @@
 Feature: Validate login functionality of amazon website
-  @Smoke
+
+  #@Smoke
   Scenario Outline: Verify login functionality with valid credentials
     Given user is on amazon sign in page
     When user enters <username> and <password>
@@ -10,7 +11,7 @@ Feature: Validate login functionality of amazon website
       | username                   | password  |
       | vijayruttala9851@gmail.com | Vijay@985 |
 
-  @Regression
+  #@Regression
   Scenario Outline: Verify login functionality with invalid credentials
     Given user is on amazon sign in page
     When user enters <username> and <password>
@@ -20,3 +21,27 @@ Feature: Validate login functionality of amazon website
     Examples:
       | username                   | password   |
       | vijayruttala9851@gmail.com | Vijay@9857 |
+
+  Scenario: Test 3
+    Given user is on amazon sign in page
+
+  Scenario: Test 4
+    Given user is on amazon sign in page
+
+  Scenario: Test 5
+    Given user is on amazon sign in page
+
+  Scenario: Test 6
+    Given user is on amazon sign in page
+
+  Scenario: Test 7
+    Given user is on amazon sign in page
+
+  Scenario: Test 8
+    Given user is on amazon sign in page
+
+  Scenario: Test 9
+    Given user is on amazon sign in page
+
+  Scenario: Test 10
+    Given user is on amazon sign in page

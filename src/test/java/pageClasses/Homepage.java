@@ -31,7 +31,7 @@ public class Homepage {
 	}
 	
 	public void verifyLoginWithInvalidCredentials() {
-		if(loginErrorText.isDisplayed()) {
+		if(!loginErrorText.isDisplayed()) {
 			System.out.println("User failed to land on amazon homepage with invalid credentials");
 		}
 		
