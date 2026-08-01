@@ -77,8 +77,9 @@ public class Hooks {
 	
 	@AfterAll
 	public static void afterAll() throws Exception {
-
+        System.out.println("Before");
 	    EmailReportGenerator.generateReport();
+	    System.out.println("After");
 
 	}
 }

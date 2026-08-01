@@ -8,7 +8,8 @@ import java.nio.file.Paths;
 public class EmailReportGenerator {
 
     public static void generateReport() throws Exception {
-
+        
+    	Thread.sleep(60000); // Wait for the cucumber.json file to be generated
         String json = Files.readString(Paths.get("target/cucumber.json"));
 
         JsonArray features = JsonParser.parseString(json).getAsJsonArray();
