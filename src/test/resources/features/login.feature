@@ -21,27 +21,3 @@ Feature: Validate login functionality of amazon website
     Examples:
       | username                   | password   |
       | vijayruttala9851@gmail.com | Vijay@9857 |
-
-  Scenario: Test 3
-    Given user is on amazon sign in page
-
-  Scenario: Test 4
-    Given user is on amazon sign in page
-
-  Scenario: Test 5
-    Given user is on amazon sign in page
-
-  Scenario: Test 6
-    Given user is on amazon sign in page
-
-  Scenario: Test 7
-    Given user is on amazon sign in page
-
-  Scenario: Test 8
-    Given user is on amazon sign in page
-
-  Scenario: Test 9
-    Given user is on amazon sign in page
-
-  Scenario: Test 10
-    Given user is on amazon sign in page
