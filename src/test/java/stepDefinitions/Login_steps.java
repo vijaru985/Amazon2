@@ -4,9 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
-
 import org.openqa.selenium.WebDriver;
-
 import driver.DriverInstance;
 import io.cucumber.java.en.*;
 import pageClasses.EnterMobileNumberOrEmailPage;
@@ -28,12 +26,10 @@ public class Login_steps {
 		oGF = new GenericFunctions(driver);
 	}
 
-	@Given("user is on amazon sign in page")
+	@Given("^user is on amazon sign in page$")
 	public void user_is_on_amazon_sign_in_page() throws IOException {
 		String url = oGF.getConfigProperty("URL");
-		System.out.println("URL from properties file: " + url);
 		driver.get(url);
-		//oGF.captureScreenshot(driver);
 		lp = new LoginPage(driver);
 		lp.clickSignInButton();
 	}

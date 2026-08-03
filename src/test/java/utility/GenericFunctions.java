@@ -37,6 +37,7 @@ public class GenericFunctions {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 		return prop.getProperty(key);
 	}
 	

@@ -20,6 +20,7 @@ import io.cucumber.java.Before;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.Scenario;
 import utility.GenericFunctions;
+import utility.Log;
 
 public class Hooks {
     private static ThreadLocal<Scenario> scenario = new ThreadLocal<>();
@@ -29,6 +30,7 @@ public class Hooks {
 	@Before
 	public void setup() {
 		driver = new ChromeDriver();
+		Log.logger.info("Launching Chrome browser");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
 		DriverInstance.setDriver(driver);

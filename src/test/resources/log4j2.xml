@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration status="WARN">
+
+    <Properties>
+
+        <Property name="logPath">target/logs</Property>
+
+    </Properties>
+
+    <Appenders>
+
+        <Console name="Console" target="SYSTEM_OUT">
+
+            <PatternLayout
+                    pattern="%d{dd-MM-yyyy HH:mm:ss} [%t] %-5level %c - %msg%n"/>
+
+        </Console>
+
+        <RollingFile
+                name="File"
+                fileName="${logPath}/Automation.log"
+                filePattern="${logPath}/Automation-%d{yyyy-MM-dd}.log">
+
+            <PatternLayout
+                    pattern="%d{dd-MM-yyyy HH:mm:ss} %-5level %c - %msg%n"/>
+
+            <Policies>
+
+                <SizeBasedTriggeringPolicy size="5 MB"/>
+
+            </Policies>
+
+        </RollingFile>
+
+    </Appenders>
+
+    <Loggers>
+
+        <Root level="info">
+
+            <AppenderRef ref="Console"/>
+
+            <AppenderRef ref="File"/>
+
+        </Root>
+
+    </Loggers>
+
+</Configuration>
