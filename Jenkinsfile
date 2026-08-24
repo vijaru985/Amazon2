@@ -13,7 +13,7 @@ pipeline {
 
             steps {
 
-                 bat 'mvn clean test -Ddriver=${params.driver} -Dusername=${params.username} -Dpassword=${params.password}'
+                 bat "mvn clean test -Ddriver=${params.driver} -Dusername=${params.username} -Dpassword=${params.password}"
 
             }
 
