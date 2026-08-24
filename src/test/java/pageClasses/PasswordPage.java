@@ -6,9 +6,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
+import utility.BaseClass;
+import utility.DatabaseOperations;
+import utility.Environment;
 
-public class PasswordPage {
-   WebDriver driver;
+
+public class PasswordPage extends BaseClass{
+   private WebDriver driver;
    
    @FindBy(xpath = "//label[contains(.,'Password')]")
    private WebElement passwordLabel;
@@ -21,15 +25,21 @@ public class PasswordPage {
    
    public PasswordPage(WebDriver driver) {
 	   this.driver = driver;
-		AjaxElementLocatorFactory factory = new AjaxElementLocatorFactory(driver, 30);
+		AjaxElementLocatorFactory factory = new AjaxElementLocatorFactory(this.driver, 30);
 		PageFactory.initElements(factory, this);
    }
    
-	public void enterPassword(String password) {
-		passwordInput.sendKeys(password);
+	public void enterPassword() {
+		enterText(passwordInput, Environment.getPassword());
+		//enterText(passwordInput, DatabaseOperations.getPassword(Environment.getUsername())); //To fetch password from Database
 	}
 	
 	public void clickOnSignInButton() {
-		signInBtn.click();
+		clickElement(signInBtn, "Sign In Button", 5);
+	}
+
+	public void enterPassword(String password) {
+		enterText(passwordInput, password);
+		
 	}
 }
