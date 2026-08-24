@@ -13,7 +13,7 @@ pipeline {
 
             steps {
 
-                bat 'mvn clean test'
+                 bat 'mvn clean test -Ddriver=chrome -Dusername=vijayruttala9851@gmail.com -Dpassword=Vijay@985'
 
             }
 
