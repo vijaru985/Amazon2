@@ -7,18 +7,25 @@ pipeline {
         jdk 'Default JDK'
     }
 
-    stages {
+   stages {
 
         stage('Run Tests') {
 
             steps {
 
-                 bat 'mvn clean test -Ddriver=chrome -Dusername=vijayruttala9851@gmail.com -Dpassword=Vijay@985'
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: 'amazon-test-credentials',
+                        usernameVariable: 'USERNAME',
+                        passwordVariable: 'PASSWORD'
+                    )
+                ]) {
 
+                    bat "mvn clean test -Ddriver=${params.driver} -Dusername=%USERNAME% -Dpassword=%PASSWORD%"
+
+                }
             }
-
         }
-
     }
 
     post {

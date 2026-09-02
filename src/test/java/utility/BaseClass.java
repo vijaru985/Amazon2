@@ -82,14 +82,16 @@ public class BaseClass {
 		Log.logger.info(elementName + " is displayed");
 	}
 
-	public void isElementDisplayedOptional(WebElement element, String elementName, int timeout) {
+	public boolean isElementDisplayedOptional(WebElement element, String elementName, int timeout) {
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
 			wait.until(ExpectedConditions.visibilityOf(element));
 			Log.logger.info(elementName + " is displayed");
+			return true;
 		} catch (TimeoutException e) {
 			Log.logger.error("Element is not displayed : " + e.getMessage());
 		}
+		return false;
 
 	}
 
@@ -99,16 +101,16 @@ public class BaseClass {
 		Log.logger.info("Entered Text is : "+value);
 	}
 	
-	public void clickElement(WebElement element, String elementName, int timeout) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
-		wait.until(ExpectedConditions.elementToBeClickable(element));
+	public void clickElement(WebElement element, String elementName) {
+		//WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+		//wait.until(ExpectedConditions.elementToBeClickable(element));
 		element.click();
 		Log.logger.info("Clicked on "+elementName+" successfully");
 	}
 	
-	public String getElementText(WebElement element, String elementName, int timeout) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
-		wait.until(ExpectedConditions.visibilityOf(element));
+	public String getElementText(WebElement element, String elementName) {
+		//WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+		//wait.until(ExpectedConditions.visibilityOf(element));
 		String text = element.getText();
 		Log.logger.info("Text retrieved from " + elementName + ": " + text);
 		return text;

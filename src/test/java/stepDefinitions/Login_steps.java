@@ -1,7 +1,11 @@
 package stepDefinitions;
 
 import java.io.IOException;
+import java.util.HashMap;
+
 import org.openqa.selenium.WebDriver;
+
+import driver.DataTableInstance;
 import driver.DriverInstance;
 import io.cucumber.java.en.*;
 import pageClasses.BestSellersPage;
@@ -17,9 +21,11 @@ public class Login_steps {
 	private PasswordPage pp;
 	private Homepage hp;
 	private BestSellersPage bsp;
+	private HashMap<String, String> dataTable;
 
 	public Login_steps() {
 		driver = DriverInstance.getDriver();
+		dataTable = DataTableInstance.getDataTable();
 	}
 
 	@Given("^user is on amazon sign in page$")
@@ -96,6 +102,21 @@ public class Login_steps {
 	public void user_verifies_eligibility_api_call_is_successful() throws InterruptedException {
 		lp = new LoginPage(driver);
 		lp.verifyAPICall();
+	}
+	
+	@Given("user logged into amazon website")
+	public void user_logged_into_amazon_website() throws IOException {
+		lp = new LoginPage(driver);
+		lp.hitLoginURL();
+		lp.clickSignInButton();
+		ep = new EnterMobileNumberOrEmailPage(driver);
+		pp = new PasswordPage(driver);
+		ep.enterMobileNoOrEmail();
+		ep.clickOnContinue();
+		pp.enterPassword();
+		pp.clickOnSignInButton();
+		hp = new Homepage(driver);
+		hp.verifyHomepageLanding();
 	}
 
 }

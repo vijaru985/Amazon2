@@ -12,7 +12,7 @@ import driver.DataTableInstance;
 import utility.BaseClass;
 import utility.GenericFunctions;
 
-public class BestSellersPage extends BaseClass {
+public class BestSellersProductPage extends BaseClass {
 
 	private WebDriver driver;
 	private HashMap<String, String> dataTable;
@@ -20,18 +20,12 @@ public class BestSellersPage extends BaseClass {
 	@FindBy(xpath = "(//a[@class='a-link-normal aok-block'])[1]")
 	private WebElement bestSellerFirstProduct;
 	
-	@FindBy(xpath = "//span[@id='productTitle']")
-	private WebElement firstProductTitle;
 
-	public BestSellersPage(WebDriver driver) {
+	public BestSellersProductPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(new AjaxElementLocatorFactory(driver, 15), this);
 		dataTable = DataTableInstance.getDataTable();
 	}
 
-	public void clickOnBestSellersFirstProduct() {
-		clickElement(bestSellerFirstProduct, "Best Sellers First Product");
-		dataTable.put("BestSellersFirstProductTitle", getElementText(firstProductTitle, "First Product Title"));
-	}
-
 }
+

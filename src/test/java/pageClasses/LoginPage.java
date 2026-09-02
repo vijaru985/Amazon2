@@ -29,7 +29,7 @@ public class LoginPage extends BaseClass {
 	}
 
 	public void clickSignInButton() {
-		clickElement(signInBtn, "Sign In Button", 5);
+		clickElement(signInBtn, "Sign In Button");
 	}
 
 	public void verifyAPICall() {

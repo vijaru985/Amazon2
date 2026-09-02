@@ -91,13 +91,13 @@ public class Hooks {
 		return scenario.get();
 	}
 
-	@After(order = 0)
+	//@After(order = 0)
 	public void tearDown() {
 		DriverInstance.getDriver().quit();
 		DriverInstance.unload();
 	}
 
-	@AfterStep(order = 0)
+	//@AfterStep(order = 0)
 	public void takeScreenshotAfterEachStep() {
 		BaseClass bc = new BaseClass();
 		bc.captureScreenshot(DriverInstance.getDriver());

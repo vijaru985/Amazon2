@@ -35,7 +35,7 @@ public class PasswordPage extends BaseClass{
 	}
 	
 	public void clickOnSignInButton() {
-		clickElement(signInBtn, "Sign In Button", 5);
+		clickElement(signInBtn, "Sign In Button");
 	}
 
 	public void enterPassword(String password) {

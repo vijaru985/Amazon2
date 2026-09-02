@@ -59,7 +59,7 @@ public class Homepage extends BaseClass {
 	}
 
 	public void clickOnAllMenuButton() {
-		clickElement(allMenuButton, "All Menu Button", 5);
+		clickElement(allMenuButton, "All Menu Button");
 	}
 
 	public void clickOnMenuLink(String linkName) {
@@ -70,7 +70,7 @@ public class Homepage extends BaseClass {
 	}
 
 	public void clickOnLocationButton() {
-		clickElement(locationButton, "Location Button", 5);
+		clickElement(locationButton, "Location Button");
 	}
 
 	public void verifyChooseLocationPopup() {
@@ -81,11 +81,11 @@ public class Homepage extends BaseClass {
 
 	public void enterPincodeAndClickOnApply() {
 		enterText(enterPincodeTextbox, getConfigProperty("pincode"));
-		clickElement(applyButton, "Apply Button", 5);
+		clickElement(applyButton, "Apply Button");
 	}
 
 	public void verifyLocationUpdate() {
-		String updatedLocationText = getElementText(updatedLocation, "Updated Location", 5);
+		String updatedLocationText = getElementText(updatedLocation, "Updated Location");
 		String expectedLocationText = getConfigProperty("location");
 		String expectedPincodeText = getConfigProperty("pincode");
 		doValidation(updatedLocationText.contains(expectedLocationText),

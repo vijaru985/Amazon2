@@ -30,7 +30,7 @@ public class EnterMobileNumberOrEmailPage extends BaseClass {
 	}
 
 	public void clickOnContinue() {
-		clickElement(continueBtn, "Continue Button", 5);
+		clickElement(continueBtn, "Continue Button");
 	}
 
 	public void enterMobileNoOrEmail(String username) {
