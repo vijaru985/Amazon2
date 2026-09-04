@@ -15,7 +15,7 @@ Feature: Validate login functionality of amazon website
     Then user fails to land on amazon homepage
 
     Examples:
-      | username                   | password   |
+      | username               | password      |
       | invalidEmail@gmail.com | duplicate@123 |
 
   @DatabaseTesting
@@ -24,9 +24,9 @@ Feature: Validate login functionality of amazon website
     When user enters username and password from database
     And user clicks on sign in button
     Then user lands on amazon homepage successfully
-    
-    @APITesting
-Scenario: Validate API Testing
+
+  @APITesting
+  Scenario: Validate API Testing
     Given user is on amazon sign in page
     When user enters username and password
     And user clicks on sign in button
@@ -35,12 +35,10 @@ Scenario: Validate API Testing
     When user clicks on Bestsellers link in menu section
     And user clicks on first product in best sellers page
     Then user verifies eligibility API call is successful
-    
-    @Regression
-    Scenario: Validate update Location in homepage without signing in
-    
+
+  @Regression
+  Scenario: Validate update Location in homepage without signing in
     Given user is on amazon homepage
     When user clicks on location section in homepage
-    And  user enters pincode and clicks on apply button in choose location popup
+    And user enters pincode and clicks on apply button in choose location popup
     Then user verifies location is updated successfully
-    

@@ -12,6 +12,7 @@ import org.testng.Assert;
 import driver.DriverInstance;
 import utility.BaseClass;
 import utility.DevToolsManager;
+import utility.Log;
 
 public class LoginPage extends BaseClass {
 	private WebDriver driver;
@@ -25,6 +26,7 @@ public class LoginPage extends BaseClass {
 	}
 
 	public void hitLoginURL() {
+		Log.logger.info("Product is : "+getTestData("Product"));
 		driver.get(getConfigProperty("url"));
 	}
 

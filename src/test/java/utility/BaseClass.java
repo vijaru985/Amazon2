@@ -26,6 +26,34 @@ import hooks.Hooks;
 
 public class BaseClass {
     WebDriver driver;
+
+    private static final ThreadLocal<TestCaseData> testData =
+            new ThreadLocal<>();
+
+    public static void setTestData(TestCaseData data) {
+        testData.set(data);
+    }
+
+    public static TestCaseData getTestData() {
+        return testData.get();
+    }
+
+    public static String getTestData(String columnName) {
+
+        TestCaseData data = testData.get();
+
+        if (data == null) {
+            throw new IllegalStateException(
+                "TestCaseData is not initialized for the current thread."
+            );
+        }
+
+        return data.get(columnName);
+    }
+
+    public static void unloadTestData() {
+        testData.remove();
+    }
     
 	public BaseClass() {
 		this.driver = DriverInstance.getDriver();
