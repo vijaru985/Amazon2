@@ -3,39 +3,38 @@ package utility;
 import java.io.InputStream;
 import java.util.LinkedHashMap;
 import java.util.Map;
-
 import org.apache.poi.ss.usermodel.*;
 
 public class ExcelReader {
+    
+    
 
-    private static final String FILE_PATH =
-            "testdata/TestData.xlsx";
+    public static Object[][] getTestData(
+            String dataFile,
+            String sheetName) {
 
-    private static final String SHEET_NAME =
-            "TestCases";
-
-    public static Object[][] getTestData() {
-
+        String filePath = "testdata/" + dataFile;
+        
         try (InputStream inputStream =
                      ExcelReader.class
                              .getClassLoader()
-                             .getResourceAsStream(FILE_PATH)) {
+                             .getResourceAsStream(filePath)) {
 
             if (inputStream == null) {
                 throw new RuntimeException(
-                        "Excel file not found: " + FILE_PATH);
+                        "Excel file not found: " + filePath);
             }
 
             try (Workbook workbook =
                          WorkbookFactory.create(inputStream)) {
 
                 Sheet sheet =
-                        workbook.getSheet(SHEET_NAME);
+                        workbook.getSheet(sheetName);
 
                 if (sheet == null) {
                     throw new RuntimeException(
                             "Excel sheet not found: "
-                                    + SHEET_NAME);
+                                    + sheetName);
                 }
 
                 DataFormatter formatter =

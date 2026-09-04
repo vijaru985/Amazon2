@@ -2,15 +2,15 @@ package testRunner;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Factory;
-
+import org.testng.annotations.Parameters;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.FeatureWrapper;
 import io.cucumber.testng.PickleWrapper;
 import utility.BaseClass;
+import utility.ExcelReader;
 import utility.TestCaseData;
 
 @CucumberOptions(
@@ -32,15 +32,10 @@ public class TestRunner
 
     private final TestCaseData testCaseData;
 
-    @Factory(
-            dataProvider = "testScenarios",
-            dataProviderClass = TestDataProvider.class
-    )
-    
     public TestRunner(TestCaseData testCaseData) {
-
         this.testCaseData = testCaseData;
     }
+    
     @Override
     @DataProvider(parallel = true)
     public Object[][] scenarios() {
@@ -79,6 +74,30 @@ public class TestRunner
                 new Object[0][]);
     }
 
+    @Factory
+    @Parameters({"dataFile", "dataSheet"})
+    public static Object[] createTestInstances(
+            String dataFile,
+            String dataSheet) {
+
+        Object[][] testData =
+                ExcelReader.getTestData(dataFile, dataSheet);
+
+        Object[] runners =
+                new Object[testData.length];
+
+        for (int i = 0; i < testData.length; i++) {
+
+            TestCaseData data =
+                    (TestCaseData) testData[i][0];
+
+            runners[i] =
+                    new TestRunner(data);
+        }
+
+        return runners;
+    }
+    
     private boolean isMatchingScenario(
             String featurePath,
             String scenarioName) {

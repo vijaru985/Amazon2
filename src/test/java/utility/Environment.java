@@ -21,7 +21,7 @@ public class Environment {
 		String username = System.getProperty("username");
 
 		if (username == null || username.isBlank()) {
-			username = System.getenv("username");
+			username = System.getenv("AMAZON_USERNAME");
 		}
 
 		return username;
@@ -32,7 +32,7 @@ public class Environment {
 		String password = System.getProperty("password");
 
 		if (password == null || password.isBlank()) {
-			password = System.getenv("password");
+			password = System.getenv("AMAZON_PASSWORD");
 		}
 
 		return password;

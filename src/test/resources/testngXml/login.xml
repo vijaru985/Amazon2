@@ -1,9 +1,33 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite" parallel="methods" thread-count="1">
-  <test thread-count="2" name="Test">
-  <classes>
-      <class name="testRunner.TestRunner"/>
-    </classes>
-  </test> <!-- Test -->
-</suite> <!-- Suite -->
+<suite name="Login Suite"
+       parallel="tests"
+       thread-count="2">
+
+    <test name="Valid Login">
+
+        <parameter name="dataFile"
+                   value="LoginTestData.xlsx"/>
+
+        <parameter name="dataSheet"
+                   value="ValidLogin"/>
+
+        <classes>
+            <class name="testRunner.TestRunner"/>
+        </classes>
+
+    </test>
+
+    <test name="Invalid Login">
+
+        <parameter name="dataFile"
+                   value="LoginTestData.xlsx"/>
+
+        <parameter name="dataSheet"
+                   value="InvalidLogin"/>
+
+        <classes>
+            <class name="testRunner.TestRunner"/>
+        </classes>
+
+    </test>
+
+</suite>

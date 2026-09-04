@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE suite SYSTEM
+        "https://testng.org/testng-1.0.dtd">
+
+<suite name="Cart Suite">
+
+    <test name="Add To Cart">
+
+        <parameter name="dataFile"
+                   value="CartTestData.xlsx"/>
+
+        <parameter name="dataSheet"
+                   value="AddToCart"/>
+
+        <classes>
+            <class name="testRunner.TestRunner"/>
+        </classes>
+
+    </test>
+
+</suite>

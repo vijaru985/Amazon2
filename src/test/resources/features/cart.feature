@@ -1,7 +1,7 @@
 Feature: Validate cart functionality
 
   @Smoke
-  Scenario: Verify user can add and remove a product from the cart
+  Scenario: Add product to cart
     Given user logged into amazon website
     And user clicks on all menu button
     When user clicks on Bestsellers link in menu section
