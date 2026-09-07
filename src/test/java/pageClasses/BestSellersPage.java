@@ -7,8 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
-import driver.DataTableInstance;
 import utility.BaseClass;
+import utility.ScenarioContext;
 
 public class BestSellersPage extends BaseClass {
 
@@ -24,7 +24,7 @@ public class BestSellersPage extends BaseClass {
 	public BestSellersPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(new AjaxElementLocatorFactory(driver, 15), this);
-		dataTable = DataTableInstance.getDataTable();
+		dataTable = ScenarioContext.getDataTable();
 	}
 
 	public void clickOnBestSellersFirstProduct() {

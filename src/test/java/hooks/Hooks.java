@@ -8,7 +8,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import driver.DataTableInstance;
 import driver.DriverInstance;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -18,6 +17,7 @@ import utility.DevToolsManager;
 import utility.Environment;
 import utility.GenericFunctions;
 import utility.Log;
+import utility.ScenarioContext;
 
 public class Hooks {
 
@@ -70,7 +70,7 @@ public class Hooks {
         driver.manage()
                 .timeouts()
                 .implicitlyWait(
-                        Duration.ofSeconds(15));
+                        Duration.ofSeconds(10));
 
         DriverInstance.setDriver(driver);
 
@@ -126,7 +126,7 @@ public class Hooks {
 
         } finally {
 
-            DataTableInstance.unload();
+        	ScenarioContext.unload();
             DriverInstance.unload();
             scenario.remove();
             scenarioExecutionTime.remove();

@@ -7,9 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
-import driver.DataTableInstance;
 import utility.BaseClass;
 import utility.Log;
+import utility.ScenarioContext;
 
 public class Cart extends BaseClass {
 
@@ -21,14 +21,38 @@ public class Cart extends BaseClass {
 	
 	@FindBy(xpath = "//span[@class='sc-action-quantity']/preceding::span[@class='a-truncate-cut'  and not(contains(@style,'auto'))][1]")
 	private List<WebElement> itemsInCart;
+	
+	@FindBy(xpath = "//span[@id='nav-cart-count']")
+	private WebElement cartCount;
+	
+	@FindBy(xpath = "//span[@id='productTitle']")
+	private WebElement productTitle;
+	
+	@FindBy(xpath = "//span[contains(text(),'Add to cart') and contains(@id,'submit')]/preceding-sibling::input[@type='submit']")
+	private WebElement addToCartButton;
+	
+	@FindBy(xpath = "//a[@aria-label='Exit this panel and return to the product page.']")
+	private WebElement addedToCartPopupCloseIcon;
 
 	public Cart(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(new AjaxElementLocatorFactory(driver, 15), this);
-		dataTable = DataTableInstance.getDataTable();
+		dataTable = ScenarioContext.getDataTable();
 	}
 
 
+	public void addProductToCart() {
+		String productTitleValue = getElementText(productTitle, "Product Title");
+		clickElement(addToCartButton, "Add To Cart");
+		if(isElementDisplayedOptional(addedToCartPopupCloseIcon, "Added To Cart Popup close Icon", 2)) {
+			clickElement(addToCartButton, "Added To Cart Popup close Icon");
+		}
+		dataTable.put("AddedProductToCart", productTitleValue);
+	}
+	
+	public String cartCount() {
+		return getElementText(cartCount, "Cart Count");
+	}
 
 	public void verifyAddedProductToCart() throws Exception {
 		clickElement(cart, "Cart");

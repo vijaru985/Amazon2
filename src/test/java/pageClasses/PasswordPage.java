@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import utility.BaseClass;
+import utility.DatabaseOperations;
 import utility.Environment;
 
 
@@ -29,7 +30,10 @@ public class PasswordPage extends BaseClass{
    
 	public void enterPassword() {
 		enterText(passwordInput, Environment.getPassword());
-		//enterText(passwordInput, DatabaseOperations.getPassword(Environment.getUsername())); //To fetch password from Database
+	}
+	
+	public void enterPasswordFromDB() {
+		enterText(passwordInput, DatabaseOperations.getPassword(Environment.getUsername())); //To fetch password from Database
 	}
 	
 	public void clickOnSignInButton() {

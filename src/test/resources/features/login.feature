@@ -19,7 +19,7 @@ Feature: Validate login functionality of amazon website
       | invalidEmail@gmail.com | duplicate@123 |
 
   @DatabaseTesting
-  Scenario: Validate login functionality with database credentials
+  Scenario: Login with database credentials
     Given user is on amazon sign in page
     When user enters username and password from database
     And user clicks on sign in button

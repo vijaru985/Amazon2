@@ -125,67 +125,6 @@ public class DevToolsManager {
         );
     }
 
-    /**
-     * Waits until eligibility API request is captured.
-     */
-    public boolean waitForEligibilityApiCall(
-            Duration timeout) {
-
-        long endTime =
-                System.currentTimeMillis()
-                        + timeout.toMillis();
-
-        while (System.currentTimeMillis() < endTime) {
-
-            if (eligibilityApiCalled) {
-                return true;
-            }
-
-            try {
-
-                Thread.sleep(100);
-
-            } catch (InterruptedException e) {
-
-                Thread.currentThread().interrupt();
-
-                return false;
-            }
-        }
-
-        return false;
-    }
-
-    /**
-     * Waits until eligibility API response is received.
-     */
-    public boolean waitForEligibilityApiResponse(
-            Duration timeout) {
-
-        long endTime =
-                System.currentTimeMillis()
-                        + timeout.toMillis();
-
-        while (System.currentTimeMillis() < endTime) {
-
-            if (eligibilityResponseReceived) {
-                return true;
-            }
-
-            try {
-
-                Thread.sleep(100);
-
-            } catch (InterruptedException e) {
-
-                Thread.currentThread().interrupt();
-
-                return false;
-            }
-        }
-
-        return false;
-    }
 
     public boolean isEligibilityApiCalled() {
 
@@ -212,6 +151,10 @@ public class DevToolsManager {
         return eligibilityResponseReceived;
     }
     
+    /**
+     * Waits until eligibility API response is received.
+     */
+   
     public boolean waitForEligibilityApiResponse(
             WebDriver driver,
             Duration timeout) {

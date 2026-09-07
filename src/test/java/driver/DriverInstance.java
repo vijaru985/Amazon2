@@ -17,6 +17,7 @@ public class DriverInstance {
 
 	public static void unload() {
 		driver.remove();
+		devToolsManager.remove();
 	}
 	
 	public static DevToolsManager getDevToolsManager() {

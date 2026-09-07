@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE suite SYSTEM
+        "https://testng.org/testng-1.0.dtd">
+
+<suite name="Common Suite">
+
+    <test name="Eligibility API Test">
+
+        <parameter name="dataFile"
+                   value="CommonTestData.xlsx"/>
+
+        <parameter name="dataSheet"
+                   value="CommonTestcases"/>
+
+        <classes>
+            <class name="testRunner.TestRunner"/>
+        </classes>
+
+    </test>
+
+</suite>

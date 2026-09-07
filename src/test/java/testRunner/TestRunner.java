@@ -131,10 +131,6 @@ public class TestRunner
                 && scenarioMatches;
     }
 
-    public TestCaseData getTestCaseData() {
-        return testCaseData;
-    }
-
     @Override
     public String toString() {
 

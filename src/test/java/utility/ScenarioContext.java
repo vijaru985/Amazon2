@@ -1,8 +1,8 @@
-package driver;
+package utility;
 
 import java.util.HashMap;
 
-public class DataTableInstance {
+public class ScenarioContext {
 
     private static final ThreadLocal<HashMap<String, String>>
             dataTable =

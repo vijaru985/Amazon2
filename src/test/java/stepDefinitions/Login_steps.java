@@ -1,9 +1,7 @@
 package stepDefinitions;
 
-import java.io.IOException;
 import java.util.HashMap;
 import org.openqa.selenium.WebDriver;
-import driver.DataTableInstance;
 import driver.DriverInstance;
 import io.cucumber.java.en.*;
 import pageClasses.BestSellersPage;
@@ -11,6 +9,7 @@ import pageClasses.EnterMobileNumberOrEmailPage;
 import pageClasses.Homepage;
 import pageClasses.LoginPage;
 import pageClasses.PasswordPage;
+import utility.ScenarioContext;
 
 public class Login_steps {
 	private WebDriver driver;
@@ -23,11 +22,11 @@ public class Login_steps {
 
 	public Login_steps() {
 		driver = DriverInstance.getDriver();
-		dataTable = DataTableInstance.getDataTable();
+		dataTable = ScenarioContext.getDataTable();
 	}
 
 	@Given("^user is on amazon sign in page$")
-	public void user_is_on_amazon_sign_in_page() throws IOException {
+	public void user_is_on_amazon_sign_in_page() {
 		lp = new LoginPage(driver);
 		lp.hitLoginURL();
 		lp.clickSignInButton();
@@ -75,7 +74,7 @@ public class Login_steps {
 		pp = new PasswordPage(driver);
 		ep.enterMobileNoOrEmail();
 		ep.clickOnContinue();
-		pp.enterPassword();
+		pp.enterPasswordFromDB();
 	}
 
 	@And("user clicks on all menu button")
@@ -103,18 +102,9 @@ public class Login_steps {
 	}
 	
 	@Given("user logged into amazon website")
-	public void user_logged_into_amazon_website() throws IOException {
+	public void user_logged_into_amazon_website() {
 		lp = new LoginPage(driver);
-		lp.hitLoginURL();
-		lp.clickSignInButton();
-		ep = new EnterMobileNumberOrEmailPage(driver);
-		pp = new PasswordPage(driver);
-		ep.enterMobileNoOrEmail();
-		ep.clickOnContinue();
-		pp.enterPassword();
-		pp.clickOnSignInButton();
-		hp = new Homepage(driver);
-		hp.verifyHomepageLanding();
+		lp.loginToAmazon();
 	}
 
 }

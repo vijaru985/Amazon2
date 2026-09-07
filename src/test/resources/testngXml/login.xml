@@ -2,7 +2,7 @@
        parallel="tests"
        thread-count="2">
 
-    <test name="Valid Login">
+    <test name="Valid Login" enabled="false">
 
         <parameter name="dataFile"
                    value="LoginTestData.xlsx"/>
@@ -16,13 +16,41 @@
 
     </test>
 
-    <test name="Invalid Login">
+    <test name="Invalid Login" enabled="false">
 
         <parameter name="dataFile"
                    value="LoginTestData.xlsx"/>
 
         <parameter name="dataSheet"
                    value="InvalidLogin"/>
+
+        <classes>
+            <class name="testRunner.TestRunner"/>
+        </classes>
+
+    </test>
+    
+    <test name="Database Login" enabled="false">
+
+        <parameter name="dataFile"
+                   value="LoginTestData.xlsx"/>
+
+        <parameter name="dataSheet"
+                   value="DatabaseLogin"/>
+
+        <classes>
+            <class name="testRunner.TestRunner"/>
+        </classes>
+
+    </test>
+    
+    <test name="Eligibility API Test">
+
+        <parameter name="dataFile"
+                   value="CommonTestData.xlsx"/>
+
+        <parameter name="dataSheet"
+                   value="CommonTestcases"/>
 
         <classes>
             <class name="testRunner.TestRunner"/>

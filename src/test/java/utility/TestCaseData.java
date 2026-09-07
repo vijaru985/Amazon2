@@ -14,10 +14,6 @@ public class TestCaseData {
         return data.get(columnName);
     }
 
-    public Map<String, String> getAllData() {
-        return data;
-    }
-
     public String getTestCaseId() {
         return get("TestCaseID");
     }
@@ -28,10 +24,6 @@ public class TestCaseData {
 
     public String getScenario() {
         return get("Scenario");
-    }
-
-    public String getRunmode() {
-        return get("Runmode");
     }
 
     @Override

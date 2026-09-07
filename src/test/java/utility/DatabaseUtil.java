@@ -15,10 +15,9 @@ public class DatabaseUtil {
             if (connection == null || connection.isClosed()) {
 
                 connection = DriverManager.getConnection(
-                        "jdbc:mysql://localhost:3306/amazondb",
-                        "root",
-                        "Vijay@985");
-
+                        BaseClass.getConfigProperty("dbURL"),
+                        Environment.getDBUsername(),
+                        Environment.getDBPassword());
             }
 
         } catch (SQLException e) {

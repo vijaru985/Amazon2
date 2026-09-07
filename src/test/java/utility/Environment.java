@@ -18,13 +18,18 @@ public class Environment {
 	
 	public static String getUsername() {
 
-		String username = System.getProperty("username");
+	    String username = System.getProperty("username");
 
-		if (username == null || username.isBlank()) {
-			username = System.getenv("AMAZON_USERNAME");
-		}
+	    if (username == null || username.isBlank()) {
+	        username = System.getenv("AMAZON_USERNAME");
+	    }
 
-		return username;
+	    if (username == null || username.isBlank()) {
+	        throw new RuntimeException(
+	                "Username is not available from system property or environment variable");
+	    }
+
+	    return username;
 	}
 	
 	public static String getPassword() {
@@ -33,6 +38,28 @@ public class Environment {
 
 		if (password == null || password.isBlank()) {
 			password = System.getenv("AMAZON_PASSWORD");
+		}
+
+		return password;
+	}
+	
+	public static String getDBUsername() {
+
+		String username = System.getProperty("DB_USERNAME");
+
+		if (username == null || username.isBlank()) {
+			username = System.getenv("DB_USERNAME");
+		}
+
+		return username;
+	}
+	
+	public static String getDBPassword() {
+
+		String password = System.getProperty("DB_PASSWORD");
+
+		if (password == null || password.isBlank()) {
+			password = System.getenv("DB_PASSWORD");
 		}
 
 		return password;
