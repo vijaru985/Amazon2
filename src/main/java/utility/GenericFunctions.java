@@ -8,6 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
+import base.BaseClass;
+
 
 public class GenericFunctions extends BaseClass{
 	private WebDriver driver;

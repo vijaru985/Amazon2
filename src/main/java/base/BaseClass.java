@@ -1,4 +1,4 @@
-package utility;
+package base;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,7 +16,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import com.google.common.io.Files;
 import driver.DriverInstance;
-import hooks.Hooks;
+import utility.ConfigReader;
+import utility.GenericFunctions;
+import utility.Log;
+import utility.TestCaseData;
 
 public class BaseClass {
     WebDriver driver;
@@ -51,27 +54,6 @@ public class BaseClass {
 	
 	public static String getConfigProperty(String key) {
 		return ConfigReader.getProperty(key);
-	}
-
-	public void captureScreenshot(WebDriver driver) {
-		TakesScreenshot screenshot = (TakesScreenshot) driver;
-		String currentDate = GenericFunctions.currentDate();
-		String scenarioName = Hooks.getScenario().getName();
-		scenarioName = scenarioName.replaceAll("[^a-zA-Z0-9]", "_");
-		String executionTime = Hooks.getScenarioExecutionTime();
-		File folder = new File("./target/screenshots/" + scenarioName + "/" + executionTime);
-	    
-		if (!folder.exists()) {
-			folder.mkdirs();
-		}
-
-		File destFile = new File(folder, currentDate + ".png");
-		File srcFile = screenshot.getScreenshotAs(OutputType.FILE);
-		try {
-			Files.copy(srcFile, destFile);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 
 	public void moveToElementAndClick(WebElement element) {

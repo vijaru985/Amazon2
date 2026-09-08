@@ -10,6 +10,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import driver.DriverInstance;
 import io.cucumber.java.After;
+import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import utility.DatabaseUtil;
@@ -18,6 +19,7 @@ import utility.Environment;
 import utility.GenericFunctions;
 import utility.Log;
 import utility.ScenarioContext;
+import utility.ScreenshotUtility;
 
 public class Hooks {
 
@@ -94,15 +96,24 @@ public class Hooks {
     public void setUpScenario(Scenario sc) {
 
         scenario.set(sc);
+
+        ScenarioContext.getDataTable().put(
+                "scenarioName",
+                sc.getName());
     }
 
     @Before(order = 2)
     public void beforeScenario(Scenario scenario) {
 
-        scenarioExecutionTime.set(
-                new SimpleDateFormat(
-                        "yyyyMMdd_HHmmss")
-                        .format(new Date()));
+        String executionTime = new SimpleDateFormat(
+                "yyyyMMdd_HHmmss")
+                .format(new Date());
+
+        scenarioExecutionTime.set(executionTime);
+
+        ScenarioContext.getDataTable().put(
+                "executionTime",
+                executionTime);
     }
 
     public static String getScenarioExecutionTime() {
@@ -137,5 +148,11 @@ public class Hooks {
     public void tearDownDB() {
 
         DatabaseUtil.closeConnection();
+    }
+    
+    @AfterStep
+    public  void captureScreenshotAfterStep() {
+    	ScreenshotUtility su = new ScreenshotUtility();
+    	su.captureScreenshot(driver);
     }
 }

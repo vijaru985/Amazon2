@@ -7,8 +7,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.testng.Assert;
+
+import base.BaseClass;
 import driver.DriverInstance;
-import utility.BaseClass;
 import utility.DevToolsManager;
 import utility.Log;
 
